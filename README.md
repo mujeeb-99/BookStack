@@ -41,6 +41,12 @@ Keep `.env` private; it is ignored by Git. Do not commit database or admin crede
 
 The Vite dev server proxies `/api` requests to `http://localhost:4000`. In production, serve the built frontend and API behind a same-origin reverse proxy.
 
+## GitHub Pages
+
+The `main` branch deploys the frontend to GitHub Pages through the included GitHub Actions workflow. In the repository, open **Settings → Pages** and set **Build and deployment → Source** to **GitHub Actions**. After the workflow completes, the site is available at `https://mujeeb-99.github.io/BookStack/`.
+
+GitHub Pages only hosts static frontend files. It cannot run this project's Express API or securely connect to MongoDB Atlas, so login, registration, requests, circulation, member administration, and PDF uploads need the API hosted separately. Configure that API with HTTPS and a restricted Atlas database user before connecting a public frontend; never put Atlas credentials in frontend code or GitHub Pages settings.
+
 ## API
 
 - `GET /api/health` — service and database status.
